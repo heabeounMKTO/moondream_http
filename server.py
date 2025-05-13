@@ -3,10 +3,18 @@ import io
 from PIL import Image
 import moondream as md
 from moondream.types import EncodedImage, OnnxEncodedImage
+from transformers import AutoModelForCausalLM
+
+model = AutoModelForCausalLM.from_pretrained(
+    "vikhyatk/moondream2",
+    revision="2025-01-09",
+    trust_remote_code=True,
+    device_map={"": "cuda"}
+)
 
 app = Flask(__name__)
 
-model = md.vl(model="./moondream-2b-int8.mf")
+# model = md.vl(model="./moondream-2b-int8.mf")
 
 def encode_request_img(input_req):
     if 'input' not in input_req.files:

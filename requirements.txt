@@ -1,3 +1,7 @@
-moondream==0.0.5
 pillow
 flask
+pyvips
+einops
+torch
+transformers
+accelerate
